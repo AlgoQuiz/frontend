@@ -14,5 +14,12 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
+    '<rootDir>/store/**/*.ts',
   ],
+  preset: 'ts-jest/presets/js-with-babel',
+  browser: true,
+  testEnvironment: 'node',
+  testPathIgnorePatterns: ['node_modules'],
+  moduleDirectories: ['node_modules'],
+  clearMocks: true,
 }
