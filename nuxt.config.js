@@ -29,6 +29,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    ['@nuxtjs/dotenv', { filename: '.env' }],
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -39,6 +40,24 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.firebaseApiKey,
+          authDomain: process.env.authDomain,
+          projectId: process.env.projectId,
+          storageBucket: process.env.storageBucket,
+          messagingSenderId: process.env.messagingSenderId,
+          appId: process.env.appId,
+          measurementId: process.env.measurementId,
+        },
+        services: {
+          auth: true,
+          functions: true,
+        },
+      },
+    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -49,4 +68,8 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // Env variables
+  publicRuntimeConfig: {},
+  privateRuntimeConfig: {},
 }
