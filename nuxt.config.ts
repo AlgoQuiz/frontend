@@ -53,7 +53,17 @@ export default {
           measurementId: process.env.measurementId,
         },
         services: {
-          auth: true,
+          auth: {
+            persistence: 'local',
+            initialize: {
+              onAuthStateChangedMutation: 'user/ON_AUTH_STATE_CHANGED_MUTATION',
+              onAuthStateChangedAction: 'user/onAuthStateChangedAction',
+              subscribeManually: false,
+            },
+            ssr: false,
+            emulatorPort: undefined,
+            emulatorHost: undefined,
+          },
           functions: true,
         },
       },
