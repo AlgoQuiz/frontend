@@ -55,7 +55,7 @@ export default {
       const { user } = await this.signIn({ email, password })
 
       if (!isEmptyObject(user)) {
-        this.$router.push('/account')
+        this.$router.push('/tasks')
       }
     },
   },
