@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <NuxtLink to="/" class="navbar-brand">AlgoRace</NuxtLink>
       <button
         class="navbar-toggler"
         type="button"
@@ -14,19 +14,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <nuxt-link
-            to="/signin"
-            class="nav-link active"
-            aria-current="page"
-            href="#"
-            >Sign in</nuxt-link
+        <div v-if="isLoggedIn" class="navbar-nav">
+          <NuxtLink v-if="isLoggedIn" to="/tasks" class="nav-link"
+            >Tasks</NuxtLink
           >
-          <nuxt-link to="/signup" class="nav-link" href="#">Sign up</nuxt-link>
-          <nuxt-link to="/account" class="nav-link" href="#">Account</nuxt-link>
-          <button v-if="isLoggedIn" class="nav-link" @click="signOut">
+          <button v-if="isLoggedIn" class="nav-link button" @click="signOut">
             Sign out
           </button>
+        </div>
+        <div v-else class="navbar-nav">
+          <NuxtLink
+            v-if="!isLoggedIn"
+            to="/signin"
+            class="nav-link"
+            aria-current="page"
+            >Sign in</NuxtLink
+          >
+          <NuxtLink v-if="!isLoggedIn" to="/signup" class="nav-link"
+            >Sign up</NuxtLink
+          >
         </div>
       </div>
     </div>
@@ -54,4 +60,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.nav-link.button {
+  border: none;
+  background: transparent !important;
+}
+</style>
