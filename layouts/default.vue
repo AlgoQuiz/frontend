@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <main>
+    <main class="container">
       <Nuxt />
     </main>
   </div>
@@ -25,7 +25,10 @@ export default Vue.extend({
 })
 </script>
 <style>
-main {
-  margin-top: 64px;
+/* Todo: Replace default bootstrap styling */
+.container {
+  margin-top: 64px !important;
+  text-align: unset !important;
+  min-height: unset !important;
 }
 </style>
