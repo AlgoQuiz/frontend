@@ -54,7 +54,7 @@ export default {
       const { user } = await this.signUpWithEmail({ email, password })
 
       if (!isEmptyObject(user)) {
-        this.$router.push('/account')
+        this.$router.push('/tasks')
       }
     },
   },
