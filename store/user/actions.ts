@@ -10,6 +10,7 @@ interface UserDetails {
 }
 
 const actions: ActionTree<UserState, RootState> = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onAuthStateChangedAction: ({ commit }, { authUser, claims }: UserAuth) => {
     if (!authUser) {
       // Perform logout operations
@@ -18,7 +19,7 @@ const actions: ActionTree<UserState, RootState> = {
     }
   },
 
-  signIn: async (_, { email, password }: UserDetails) => {
+  async signIn(_, { email, password }: UserDetails) {
     try {
       return await firebase.auth().signInWithEmailAndPassword(email, password)
     } catch (e) {
@@ -26,7 +27,7 @@ const actions: ActionTree<UserState, RootState> = {
     }
   },
 
-  signOut: async () => {
+  async signOut() {
     try {
       await firebase.auth().signOut()
     } catch (e) {
@@ -34,7 +35,7 @@ const actions: ActionTree<UserState, RootState> = {
     }
   },
 
-  signUpWithEmail: async (_, { email, password }: UserDetails) => {
+  async signUpWithEmail(_, { email, password }: UserDetails) {
     try {
       return await firebase
         .auth()
