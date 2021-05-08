@@ -1,9 +1,10 @@
 <template>
   <PrismEditor
-    v-model="code"
     class="code-editor"
     :highlight="highlighter"
     line-numbers
+    :value="value"
+    @input="handleInput"
   />
 </template>
 
@@ -22,25 +23,19 @@ export default {
   },
 
   props: {
-    defaultCode: {
+    value: {
       type: String,
       required: true,
     },
   },
 
-  data() {
-    return {
-      code: '',
-    }
-  },
-
-  mounted() {
-    this.code = this.defaultCode
-  },
-
   methods: {
     highlighter(code) {
       return highlight(code, languages.js)
+    },
+
+    handleInput(value) {
+      this.$emit('input', value)
     },
   },
 }

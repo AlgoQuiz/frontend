@@ -6,8 +6,11 @@
     <div class="task__editor">
       <h2>Your solution:</h2>
       <ClientOnly>
-        <CodeEditor class="task__ide" :default-code="page.code" />
+        <CodeEditor class="task__ide" v-model="solution" :value="page.code" />
       </ClientOnly>
+      <button type="button" class="btn btn-primary" @click="submitCode">
+        Primary
+      </button>
     </div>
   </article>
 </template>
@@ -27,7 +30,39 @@ export default {
 
     return {
       page,
+      solution: page.code,
     }
+  },
+
+  data() {
+    return {
+      solution: '',
+    }
+  },
+
+  computed: {
+    algorithmId() {
+      console.log(this.$route)
+      return ''
+    },
+  },
+
+  methods: {
+    async submitCode() {
+      // const storageRef = this.$fire.storage.ref().child(``)
+      // const message = this.solution
+
+      try {
+        // const snapshot = await storageRef.putString(message)
+
+        const res = await this.$fire.functions.httpsCallable(
+          'exampleFunction'
+        )()
+        console.log(res)
+      } catch (e) {
+        alert(e.message)
+      }
+    },
   },
 }
 </script>
