@@ -64,7 +64,10 @@ export default {
             emulatorPort: undefined,
             emulatorHost: undefined,
           },
-          functions: true,
+          functions: {
+            emulatorPort: 5001,
+          },
+          storage: true,
         },
       },
     ],
