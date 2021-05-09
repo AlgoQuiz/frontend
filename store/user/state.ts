@@ -1,4 +1,6 @@
-const state = (): any => ({
+import { UserState } from './user.types'
+
+const state = (): UserState => ({
   data: {},
 })
 
