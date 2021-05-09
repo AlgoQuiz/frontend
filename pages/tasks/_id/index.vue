@@ -6,7 +6,7 @@
     <div class="task__editor">
       <h2>Your solution:</h2>
       <ClientOnly>
-        <CodeEditor class="task__ide" v-model="solution" :value="page.code" />
+        <CodeEditor v-model="solution" class="task__ide" :value="page.code" />
       </ClientOnly>
       <button type="button" class="btn btn-primary" @click="submitCode">
         Primary
@@ -16,7 +16,11 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
 import CodeEditor from '~/components/CodeEditor'
+
+const { mapActions: mapSolutionsActions } = createNamespacedHelpers('solutions')
 
 export default {
   components: {
@@ -31,37 +35,27 @@ export default {
     return {
       page,
       solution: page.code,
-    }
-  },
-
-  data() {
-    return {
-      solution: '',
+      language: 'js',
     }
   },
 
   computed: {
     algorithmId() {
-      console.log(this.$route)
-      return ''
+      return this?.$route?.params?.id
     },
   },
 
   methods: {
+    ...mapSolutionsActions(['submitSolution']),
+
     async submitCode() {
-      // const storageRef = this.$fire.storage.ref().child(``)
-      // const message = this.solution
+      const { solution, language } = this
 
-      try {
-        // const snapshot = await storageRef.putString(message)
-
-        const res = await this.$fire.functions.httpsCallable(
-          'exampleFunction'
-        )()
-        console.log(res)
-      } catch (e) {
-        alert(e.message)
-      }
+      await this.submitSolution({
+        name: this.algorithmId,
+        solution,
+        language,
+      })
     },
   },
 }
