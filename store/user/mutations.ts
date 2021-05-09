@@ -1,6 +1,7 @@
+import { MutationTree } from 'vuex/types/index'
 import { UserState, UserAuth } from './user.types'
 
-const mutations = {
+const mutations: MutationTree<UserState> = {
   ON_AUTH_STATE_CHANGED_MUTATION: (
     state: UserState,
     { authUser }: UserAuth
