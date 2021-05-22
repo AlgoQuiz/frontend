@@ -48,4 +48,45 @@ export default [
       return h(this.props.tag, [this.$slots.default])
     },
   } as MockComponent,
+  {
+    name: 'BNavbar',
+    props: ['toggleable', 'type', 'variant'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BNavbarBrand',
+    props: ['to'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BNavbarToggle',
+    props: ['target'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BCollapse',
+    props: ['id', 'is-nav'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BNavbarNav',
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BNavItem',
+    props: ['to'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
 ]
