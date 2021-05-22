@@ -1,42 +1,20 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <NuxtLink to="/" class="navbar-brand">AlgoRace</NuxtLink>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div v-if="isLoggedIn" class="navbar-nav">
-          <NuxtLink v-if="isLoggedIn" to="/tasks" class="nav-link"
-            >Tasks</NuxtLink
-          >
-          <button v-if="isLoggedIn" class="nav-link button" @click="signOut">
-            Sign out
-          </button>
-        </div>
-        <div v-else class="navbar-nav">
-          <NuxtLink
-            v-if="!isLoggedIn"
-            to="/signin"
-            class="nav-link"
-            aria-current="page"
-            >Sign in</NuxtLink
-          >
-          <NuxtLink v-if="!isLoggedIn" to="/signup" class="nav-link"
-            >Sign up</NuxtLink
-          >
-        </div>
-      </div>
-    </div>
-  </nav>
+  <BNavbar toggleable="lg" type="dark" variant="primary">
+    <BNavbarBrand to="/">AlgoRace</BNavbarBrand>
+
+    <BNavbarToggle target="nav-collapse"></BNavbarToggle>
+
+    <BCollapse id="nav-collapse" is-nav>
+      <BNavbarNav v-if="isLoggedIn" class="ml-auto">
+        <BNavItem to="/tasks">Tasks</BNavItem>
+        <BNavItem @click="signOut">Sign out</BNavItem>
+      </BNavbarNav>
+      <BNavbarNav v-else class="ml-auto">
+        <BNavItem to="/sign-in">Sign in</BNavItem>
+        <BNavItem to="/sign-up">Sign up</BNavItem>
+      </BNavbarNav>
+    </BCollapse>
+  </BNavbar>
 </template>
 
 <script>
