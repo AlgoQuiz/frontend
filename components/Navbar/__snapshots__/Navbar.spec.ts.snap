@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components: Navbar snapshots matches default snapshot 1`] = `
+"<bnavbar-stub variant=\\"primary\\" type=\\"dark\\" toggleable=\\"lg\\">
+  <bnavbarbrand-stub to=\\"/\\">AlgoRace</bnavbarbrand-stub>
+  <bnavbartoggle-stub target=\\"nav-collapse\\"></bnavbartoggle-stub>
+  <bcollapse-stub isnav=\\"\\" id=\\"nav-collapse\\">
+    <bnavbarnav-stub class=\\"ml-auto\\">
+      <bnavitem-stub to=\\"/sign-in\\">Sign in</bnavitem-stub>
+      <bnavitem-stub to=\\"/sign-up\\">Sign up</bnavitem-stub>
+    </bnavbarnav-stub>
+  </bcollapse-stub>
+</bnavbar-stub>"
+`;
