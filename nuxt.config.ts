@@ -81,6 +81,18 @@ export default {
     liveEdit: false,
   },
 
+  bootstrapVue: {
+    components: [
+      'BNavbar',
+      'BNavbarBrand',
+      'BNavbarToggle',
+      'BCollapse',
+      'BNavbarNav',
+      'BNavItem',
+    ],
+    directives: [],
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
