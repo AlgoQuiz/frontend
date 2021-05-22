@@ -17,7 +17,7 @@ module.exports = {
     '<rootDir>/store/**/*.ts',
   ],
   preset: 'ts-jest/presets/js-with-babel',
-  browser: true,
+  resolver: '<rootDir>/test/unit/resolver.ts',
   testEnvironment: 'node',
   testPathIgnorePatterns: ['node_modules'],
   moduleDirectories: ['node_modules'],
