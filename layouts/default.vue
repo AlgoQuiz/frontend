@@ -16,12 +16,6 @@ export default Vue.extend({
   components: {
     Navbar,
   },
-
-  mounted() {
-    // TODO: move to plugin/call on app start
-    // @ts-ignore
-    this.$fireAuthStore.subscribe()
-  },
 })
 </script>
 <style>

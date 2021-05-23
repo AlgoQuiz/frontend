@@ -18,13 +18,9 @@ const actions: ActionTree<SolutionsState, RootState> = {
     const { uid } = rootGetters['user/currentUser']
     const solutionId = uuidv4()
 
-    const storageRef = this.$fire.storage
-      .ref()
-      .child(`${uid}/${name}/${solutionId}.${language}`)
+    const file = `${uid}/${name}/${solutionId}.${language}`
 
-    const res = await storageRef.putString(solution)
-
-    return res
+    return file
   },
 }
 

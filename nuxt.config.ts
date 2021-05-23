@@ -40,37 +40,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: process.env.firebaseApiKey,
-          authDomain: process.env.authDomain,
-          projectId: process.env.projectId,
-          storageBucket: process.env.storageBucket,
-          messagingSenderId: process.env.messagingSenderId,
-          appId: process.env.appId,
-          measurementId: process.env.measurementId,
-        },
-        services: {
-          auth: {
-            persistence: 'local',
-            initialize: {
-              onAuthStateChangedMutation: 'user/ON_AUTH_STATE_CHANGED_MUTATION',
-              onAuthStateChangedAction: 'user/onAuthStateChangedAction',
-              subscribeManually: false,
-            },
-            ssr: false,
-            emulatorPort: undefined,
-            emulatorHost: undefined,
-          },
-          functions: {
-            emulatorPort: 5001,
-          },
-          storage: true,
-        },
-      },
-    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
