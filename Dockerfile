@@ -1,13 +1,13 @@
 FROM node:14.14-alpine
 
-RUN mkdir -p /usr/src/frontend
-WORKDIR /usr/src/frontend
+RUN mkdir -p /usr/src
+WORKDIR /usr/src
 
 RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add yarn
 
-COPY . /usr/src/frontend
+COPY . /usr/src
 RUN yarn install
 
 RUN yarn build
