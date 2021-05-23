@@ -1,0 +1,7 @@
+**/test.js
+**/test.ts
+**/spec.js
+**/spec.ts
+**/__mocks__/*
+**/__tests__/*
+**/*.types.ts

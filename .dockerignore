@@ -1,0 +1,10 @@
+.git
+.github
+.gitignore
+.circleci
+.dockerignore
+Dockerfile
+.env.*
+*.md
+node_modules
+.nuxt
