@@ -1,4 +1,3 @@
-import firebase from 'firebase'
 import { ActionTree } from 'vuex/types'
 
 import { UserAuth, UserState } from '@/store/user/user.types'
@@ -10,18 +9,9 @@ interface UserDetails {
 }
 
 const actions: ActionTree<UserState, RootState> = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onAuthStateChangedAction: ({ commit }, { authUser, claims }: UserAuth) => {
-    if (!authUser) {
-      // Perform logout operations
-    } else {
-      // Do something with the authUser and the claims object...
-    }
-  },
-
   async signIn(_, { email, password }: UserDetails) {
     try {
-      return await firebase.auth().signInWithEmailAndPassword(email, password)
+      return
     } catch (e) {
       console.error(e)
     }
@@ -29,7 +19,7 @@ const actions: ActionTree<UserState, RootState> = {
 
   async signOut() {
     try {
-      await firebase.auth().signOut()
+      await
     } catch (e) {
       console.error(e)
     }
@@ -37,9 +27,7 @@ const actions: ActionTree<UserState, RootState> = {
 
   async signUpWithEmail(_, { email, password }: UserDetails) {
     try {
-      return await firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
+      return
     } catch (e) {
       console.error(e)
     }
