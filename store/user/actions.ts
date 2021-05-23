@@ -1,6 +1,6 @@
 import { ActionTree } from 'vuex/types'
 
-import { UserAuth, UserState } from '@/store/user/user.types'
+import { UserState } from '@/store/user/user.types'
 import { RootState } from '../store.types'
 
 interface UserDetails {
@@ -19,7 +19,7 @@ const actions: ActionTree<UserState, RootState> = {
 
   async signOut() {
     try {
-      await
+      return
     } catch (e) {
       console.error(e)
     }
