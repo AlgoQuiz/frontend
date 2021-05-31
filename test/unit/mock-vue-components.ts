@@ -89,4 +89,39 @@ export default [
       return h('div', [this.$slots.default])
     },
   } as MockComponent,
+  {
+    name: 'BCol',
+    props: ['md'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BFormGroup',
+    props: ['label', 'label-for'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BFormInput',
+    props: ['id', 'type'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BButton',
+    props: ['variant'],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
+  {
+    name: 'BCard',
+    props: [],
+    render(h: Function) {
+      return h('div', [this.$slots.default])
+    },
+  } as MockComponent,
 ]
