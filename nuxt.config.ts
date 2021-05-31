@@ -40,14 +40,40 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://auth.nuxtjs.org
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:5000',
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
     liveEdit: false,
+  },
+
+  auth: {
+    localStorage: false,
+    resetOnError: true,
+    strategies: {
+      local: false,
+      cookie: {
+        cookie: {
+          name: 'auth.sid',
+        },
+        token: {
+          name: 'auth.sid',
+        },
+        endpoints: {
+          // csrf: { url: 'http://localhost:5000/me', method: 'get' },
+          login: { url: 'http://localhost:5000/login', method: 'post' },
+          logout: { url: 'http://localhost:5000/logout', method: 'post' },
+          user: { url: 'http://localhost:5000/me', method: 'get' },
+        },
+      },
+    },
   },
 
   bootstrapVue: {

@@ -1,30 +1,28 @@
 <template>
-  <div class="container">
-    <div class="d-flex flex-row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Sign in</div>
-          <div class="card-body">
-            <div class="form-group">
-              <input
-                v-model="email"
-                type="text"
-                placeholder="Email"
-                class="form-control"
-              />
-            </div>
-
-            <div class="form-group">
-              <input
-                v-model="password"
-                type="password"
-                placeholder="Password"
-                class="form-control"
-              />
-            </div>
-
-            <button @click="handleSignIn">Submit</button>
+  <div class="signin d-flex flex-row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Sign in</div>
+        <div class="card-body">
+          <div class="form-group">
+            <input
+              v-model="login.email"
+              type="text"
+              placeholder="Email"
+              class="form-control"
+            />
           </div>
+
+          <div class="form-group">
+            <input
+              v-model="login.password"
+              type="password"
+              placeholder="Password"
+              class="form-control"
+            />
+          </div>
+
+          <button @click="handleSignIn">Submit</button>
         </div>
       </div>
     </div>
@@ -41,25 +39,44 @@ const { mapActions: mapUserActions } = createNamespacedHelpers('user')
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      login: {
+        email: '',
+        password: '',
+      },
     }
+  },
+
+  mounted() {
+    console.log(this.$auth)
   },
 
   methods: {
     ...mapUserActions(['signIn']),
 
     async handleSignIn() {
-      const { email, password } = this
-
-      const { user } = await this.signIn({ email, password })
-
-      if (!isEmptyObject(user)) {
-        this.$router.push('/tasks')
+      try {
+        let response = await this.$auth.loginWith('cookie', {
+          data: this.login,
+        })
+        console.log(response)
+        console.log(this.$auth)
+      } catch (err) {
+        console.log(err)
       }
+      // const { email, password } = this
+
+      // const { user } = await this.signIn({ email, password })
+
+      // if (!isEmptyObject(user)) {
+      //   this.$router.push('/tasks')
+      // }
     },
   },
 }
 </script>
 
-<style></style>
+<style>
+.signin {
+  width: 100%;
+}
+</style>

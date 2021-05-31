@@ -5,9 +5,9 @@
     <BNavbarToggle target="nav-collapse"></BNavbarToggle>
 
     <BCollapse id="nav-collapse" is-nav>
-      <BNavbarNav v-if="isLoggedIn" class="ml-auto">
+      <BNavbarNav v-if="$auth.loggedIn" class="ml-auto">
         <BNavItem to="/tasks">Tasks</BNavItem>
-        <BNavItem @click="signOut">Sign out</BNavItem>
+        <BNavItem @click="handleSignOut">Sign out</BNavItem>
       </BNavbarNav>
       <BNavbarNav v-else class="ml-auto">
         <BNavItem to="/sign-in">Sign in</BNavItem>
@@ -20,10 +20,8 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 
-const {
-  mapActions: mapUserActions,
-  mapGetters: mapUserGetters,
-} = createNamespacedHelpers('user')
+const { mapActions: mapUserActions, mapGetters: mapUserGetters } =
+  createNamespacedHelpers('user')
 
 export default {
   name: 'Navbar',
@@ -33,7 +31,14 @@ export default {
   },
 
   methods: {
-    ...mapUserActions(['signOut']),
+    async handleSignOut() {
+      try {
+        const res = await this.$auth.logout()
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
+    },
   },
 }
 </script>
