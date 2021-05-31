@@ -1,33 +1,22 @@
 <template>
-  <div class="container">
-    <div class="d-flex flex-row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Sign in</div>
-          <div class="card-body">
-            <div class="form-group">
-              <input
-                v-model="email"
-                type="text"
-                placeholder="Email"
-                class="form-control"
-              />
-            </div>
+  <div class="signin d-flex flex-row justify-content-center">
+    <BCol :md="8">
+      <BCard>
+        <template #header>
+          <h4 class="signin__header">Sign in</h4>
+        </template>
 
-            <div class="form-group">
-              <input
-                v-model="password"
-                type="password"
-                placeholder="Password"
-                class="form-control"
-              />
-            </div>
+        <BFormGroup label="Email" label-for="email">
+          <BFormInput v-model="email" id="email" type="text" trim />
+        </BFormGroup>
 
-            <button @click="handleSignIn">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <BFormGroup label="Password" label-for="password">
+          <BFormInput v-model="password" id="password" type="password" />
+        </BFormGroup>
+
+        <BButton variant="primary" @click="handleSignIn">Submit</BButton>
+      </BCard>
+    </BCol>
   </div>
 </template>
 
@@ -62,4 +51,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.signin {
+  width: 100%;
+  margin-top: 64px;
+}
+
+.signin__header {
+  margin: 0;
+}
+</style>
