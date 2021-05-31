@@ -1,33 +1,34 @@
 <template>
-  <div class="container">
-    <div class="d-flex flex-row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Sign up</div>
-          <div class="card-body">
-            <div class="form-group">
-              <input
-                v-model="email"
-                type="text"
-                placeholder="Email"
-                class="form-control"
-              />
-            </div>
+  <div class="signup d-flex flex-row justify-content-center">
+    <BCol :md="8">
+      <BCard>
+        <template #header>
+          <h4 class="signup__header">Sign up</h4>
+        </template>
 
-            <div class="form-group">
-              <input
-                v-model="password"
-                type="password"
-                placeholder="Password"
-                class="form-control"
-              />
-            </div>
+        <BFormGroup label="Username" label-for="name">
+          <BFormInput v-model="name" id="name" type="text" trim />
+        </BFormGroup>
 
-            <button @click="handleSignUp">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <BFormGroup label="Email" label-for="email">
+          <BFormInput v-model="email" id="email" type="text" trim />
+        </BFormGroup>
+
+        <BFormGroup label="Password" label-for="password">
+          <BFormInput v-model="password" id="password" type="password" />
+        </BFormGroup>
+
+        <BFormGroup label="Confirm password" label-for="confirm-password">
+          <BFormInput
+            v-model="confirmPassword"
+            id="confirm-password"
+            type="password"
+          />
+        </BFormGroup>
+
+        <BButton variant="primary" @click="handleSignUp">Submit</BButton>
+      </BCard>
+    </BCol>
   </div>
 </template>
 
@@ -40,8 +41,10 @@ const { mapActions: mapUserActions } = createNamespacedHelpers('user')
 export default {
   data() {
     return {
+      name: '',
       email: '',
       password: '',
+      confirmPassword: '',
     }
   },
 
@@ -61,4 +64,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.signup {
+  width: 100%;
+  margin-top: 64px;
+}
+
+.signup__header {
+  margin: 0;
+}
+</style>
