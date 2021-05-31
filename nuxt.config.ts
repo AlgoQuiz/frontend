@@ -52,12 +52,18 @@ export default {
 
   bootstrapVue: {
     components: [
-      'BNavbar',
-      'BNavbarBrand',
       'BNavbarToggle',
-      'BCollapse',
+      'BNavbarBrand',
+      'BFormGroup',
+      'BFormInput',
       'BNavbarNav',
+      'BContainer',
+      'BCollapse',
       'BNavItem',
+      'BNavbar',
+      'BButton',
+      'BCard',
+      'BCol',
     ],
     directives: [],
   },

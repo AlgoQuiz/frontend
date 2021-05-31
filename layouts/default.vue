@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <main class="container">
+    <BContainer>
       <Nuxt />
-    </main>
+    </BContainer>
   </div>
 </template>
 
@@ -19,9 +19,7 @@ export default Vue.extend({
 })
 </script>
 <style>
-/* Todo: Replace default bootstrap styling */
 .container {
-  margin-top: 64px !important;
   text-align: unset !important;
   min-height: unset !important;
 }
